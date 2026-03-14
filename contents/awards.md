@@ -1,12 +1,12 @@
 
-- Outstanding Graduate Award (CUMT), 2025.
+- National Scholarship (Ministry of Education, China), 2025.
 
-- National Scholarship for Graduate Students (Ministry of Education, China), 2024.
+- Merit Student (University of Chinese Academy of Sciences), 2024 & 2025.
 
-- First-Prize Graduate Academic Scholarship (CUMT), 2023 & 2024.
+- Outstanding Graduate Award (Nanjing Agricultural University), 2023.
 
-- Outstanding Undergraduate Thesis Award (Jiangsu, China), 2022.
+- Outstanding Student Leader (Nanjing Agricultural University), 2021.
 
-- First-Prize Corporate Scholarship (CUMT), 2020.
+- First-Class Scholarship for Merit Student (top 6%), 2020 & 2021.
 
-- First-Prize Undergraduate Academic Scholarship (CUMT), 2019.
+- National Scholarship (Ministry of Education, China), 2020.
