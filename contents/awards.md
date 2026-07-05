@@ -1,5 +1,4 @@
-
-- National Scholarship (Ministry of Education, China), 2025.
+- National Scholarship (Ministry of Education, China), 2025.
 
 - Merit Student (University of Chinese Academy of Sciences), 2024 & 2025.
 
@@ -9,4 +8,4 @@
 
 - First-Class Scholarship for Merit Student (top 6%), 2020 & 2021.
 
-- National Scholarship (Ministry of Education, China), 2020.
+- National Scholarship (Ministry of Education, China), 2020.

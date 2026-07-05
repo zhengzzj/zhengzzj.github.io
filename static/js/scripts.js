@@ -2,7 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards']
+const section_names = ['home', 'publications', 'awards', 'cv']
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -56,8 +56,9 @@ window.addEventListener('DOMContentLoaded', event => {
                 const html = marked.parse(markdown);
                 document.getElementById(name + '-md').innerHTML = html;
             }).then(() => {
-                // MathJax
-                MathJax.typeset();
+                if (window.MathJax) {
+                    MathJax.typeset();
+                }
             })
             .catch(error => console.log(error));
     })
