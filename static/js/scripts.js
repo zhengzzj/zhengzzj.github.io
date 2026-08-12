@@ -1,66 +1,52 @@
+const contentDir = 'contents/';
+const configFile = 'config.yml';
+const sectionNames = ['about', 'news', 'publications', 'awards'];
 
+function setElementValue(id, value) {
+    const element = document.getElementById(id);
+    if (!element || value === undefined || value === null) {
+        return;
+    }
 
-const content_dir = 'contents/'
-const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards', 'cv']
+    if (element.tagName === 'A' && id.endsWith('-link')) {
+        element.href = value;
+        return;
+    }
 
+    element.innerHTML = value;
+}
 
-window.addEventListener('DOMContentLoaded', event => {
-
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 74,
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
+function secureExternalLinks(container) {
+    container.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
     });
+}
 
-
-    // Yaml
-    fetch(content_dir + config_file)
+window.addEventListener('DOMContentLoaded', () => {
+    fetch(contentDir + configFile)
         .then(response => response.text())
         .then(text => {
-            const yml = jsyaml.load(text);
-            Object.keys(yml).forEach(key => {
-                try {
-                    document.getElementById(key).innerHTML = yml[key];
-                } catch {
-                    console.log("Unknown id and value: " + key + "," + yml[key].toString())
-                }
-
-            })
+            const config = jsyaml.load(text);
+            Object.keys(config).forEach(key => setElementValue(key, config[key]));
         })
         .catch(error => console.log(error));
 
+    marked.use({ mangle: false, headerIds: false });
 
-    // Marked
-    marked.use({ mangle: false, headerIds: false })
-    section_names.forEach((name, idx) => {
-        fetch(content_dir + name + '.md')
+    sectionNames.forEach(name => {
+        fetch(contentDir + name + '.md')
             .then(response => response.text())
             .then(markdown => {
-                const html = marked.parse(markdown);
-                document.getElementById(name + '-md').innerHTML = html;
-            }).then(() => {
-                if (window.MathJax) {
+                const section = document.getElementById(name + '-md');
+                section.innerHTML = marked.parse(markdown);
+                secureExternalLinks(section);
+            })
+            .then(() => {
+                if (window.MathJax && typeof MathJax.typeset === 'function') {
                     MathJax.typeset();
                 }
             })
             .catch(error => console.log(error));
-    })
-
-}); 
+    });
+});
