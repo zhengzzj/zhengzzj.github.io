@@ -1,4 +1,4 @@
 - **2026.6** Graduated with honors from UCAS！🎓
 - **2026.2** One paper was accepted by IEEE PacificVis 2026. 🎉
 - **2025.10** Awarded the National Scholarship. 😀
-- **2025.5** BinoForce was published in Electronics. 🎉
+- **2025.5** One paper was published in Electronics. 🎉

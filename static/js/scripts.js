@@ -1,6 +1,7 @@
 const contentDir = 'contents/';
 const configFile = 'config.yml';
 const sectionNames = ['about', 'news', 'publications', 'awards'];
+const contentVersion = '20260813-contact-links';
 
 function setElementValue(id, value) {
     const element = document.getElementById(id);
@@ -24,7 +25,7 @@ function secureExternalLinks(container) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    fetch(contentDir + configFile)
+    fetch(contentDir + configFile + '?v=' + contentVersion)
         .then(response => response.text())
         .then(text => {
             const config = jsyaml.load(text);
@@ -35,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
     marked.use({ mangle: false, headerIds: false });
 
     sectionNames.forEach(name => {
-        fetch(contentDir + name + '.md')
+        fetch(contentDir + name + '.md?v=' + contentVersion)
             .then(response => response.text())
             .then(markdown => {
                 const section = document.getElementById(name + '-md');
